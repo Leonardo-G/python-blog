@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from Post import models
 from Post.forms import PostForm
 from django.contrib.auth.decorators import login_required
@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 def inicio_view(request):
     
     posts = models.Post.objects.all()
-    
     return render(request, "inicio.html", {"posts": posts})
 
 @login_required
@@ -24,9 +23,11 @@ def new_post(request):
             
             post = models.Post(title=dataTitle, description=dataDescription, user=dataUser, summary=dataSummary)
             post.save()
+            return redirect("/inicio")
     else:
         
         form = PostForm()
+        print(form)
         return render(request, "new_post.html", {"form": form})
     
 def post_view(request, post_id):

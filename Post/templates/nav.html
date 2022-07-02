@@ -1,0 +1,32 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/nav.css' %}">
+</head>
+<nav class="bg-black">
+    <div class="container">
+        <div class="padd-3-top">
+            <div class="navegacion">
+
+                <a 
+                    href="{% url 'inicio' %}"
+                    class="navegacion__enlace"
+                >Inicio</a>
+                <a 
+                    href="{% url 'inicio' %}"
+                    class="navegacion__enlace"
+                >Nosotros</a>
+                {% if request.user %}
+                    <a 
+                        href="{% url 'inicio' %}"
+                        class="navegacion__enlace"
+                    >Mi Perfil</a>
+                {% else %}
+                    <a 
+                        href="{% url 'inicio' %}"
+                        class="navegacion__enlace"
+                    >Iniciar Sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

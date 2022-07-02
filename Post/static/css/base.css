@@ -1,0 +1,28 @@
+*, *::before, *::after{
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f4f4f4
+}
+
+h1, h2, h3, h4, a, p, span, li, label, input, input::placeholder, textarea, textarea::placeholder{
+    font-family: 'Alegreya Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: min(90%, 125rem);
+    margin: 0 auto;
+}
+
+

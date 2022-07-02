@@ -1,17 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block link %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/newpost.css' %}">    
+{% endblock %}
+
+{%block titleMeta%} Creá un Post | Blog {% endblock %}
+
+{% block content %}
+    <section class="container">
+        <div class="bg-ff">
+
+            <form action="" method="POST" class="newpost">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="newpost__campo">
+                        {% if field.id_for_label != "id_title" %}
+                            <label for="{{ field.id_for_label}}">{{field.label}}</label>
+                        {% endif %}
     
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Crear">
-    </form>
-</body>
-</html>
+                        {{ field }}
+                    </div>
+
+                    {% if field.id_for_label == "id_title"  %}
+                        <p class="campo--info">Utilice este espacio para añadir informacion a su Post</p>
+                    {% endif%}
+                {% endfor %}
+                <input type="submit" value="Crear Post" class="btn--create">
+            </form>
+        </div>
+    </section>
+{% endblock %}
