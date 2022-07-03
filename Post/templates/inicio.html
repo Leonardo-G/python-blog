@@ -2,9 +2,22 @@
 
 {% block link %}
     {% load static %}  
+    <link rel="stylesheet" href="{% static '/css/inicio.css' %}">  
 {% endblock %}
 
 {%block titleMeta%} Inico | Blog {% endblock %}
+
+{% block header %}
+    <div class="portada">
+        <div class="portada__img">
+            <img src="{% static 'media/portada-inicio.jpg' %}" alt="portada">
+        </div>
+        <div class="portada__title">
+            <h1>BlogCoder</h1>
+            <p>Mira los articulos más visitados</p>
+        </div>
+    </div>
+{% endblock %}
 
 {% block content %}
     <section class="cards">
@@ -19,7 +32,7 @@
                         <h2>{{post.title}}</h2>
                         <p class="info--user">{{post.user}}</p>
                         <p class="info--summary">{{post.summary}}</p>
-                        <a class="btn--create btn--read" href="{% url 'post' post_id=post.id %}">continue reading</a>
+                        <a class="btn--create btn--read" href="{% url 'post' post_id=post.id %}">seguir leyendo</a>
                     </div>
                 </article>
                 {% endfor %}
@@ -29,13 +42,19 @@
     <section class="cards container">
         <div class="flex">   
             <a class="flex__card" href="#">
-                <div class="card--bg"></div>
+                <div class="card--bg">
+                    {% load static %}
+                    <img src="{% static '/media/nosotros.jpg' %}" alt="">
+                </div>
                 <div class="card--absolute">
                     <p>Nosotros</p>
                 </div>
             </a>
             <a class="flex__card" href="{% url 'new_post' %}">
-                <div class="card--bg"></div>
+                <div class="card--bg">
+                    {% load static %}
+                    <img src="{% static '/media/escribir.webp' %}" alt="">
+                </div>
                 <div class="card--absolute">
                     <p>Publica un post</p>
                 </div>
