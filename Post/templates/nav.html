@@ -15,14 +15,14 @@
                     href="{% url 'inicio' %}"
                     class="navegacion__enlace"
                 >Nosotros</a>
-                {% if request.user %}
+                {% if request.user.is_authenticated %}
                     <a 
                         href="{% url 'inicio' %}"
                         class="navegacion__enlace"
                     >Mi Perfil</a>
                 {% else %}
                     <a 
-                        href="{% url 'inicio' %}"
+                        href="{% url 'login' %}"
                         class="navegacion__enlace"
                     >Iniciar Sesión</a>
                 {% endif %}

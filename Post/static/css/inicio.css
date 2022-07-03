@@ -8,6 +8,57 @@
     column-gap: 4rem;
 }
 
+.grid-3{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+
+.post{
+    background-color: #fff;
+    box-shadow: 0 25px 60px 0 rgb(0 0 0 / 5%);
+}
+
+.post__info{
+    text-align: center;
+    padding: 2rem 4rem;
+}
+
+.post__info h2{
+    font-size: 3rem;
+    font-weight: 400;
+    color: #111;
+    padding: 2rem 0;
+}
+
+.post__info h2:hover{
+    color: #e22c2f;
+}
+
+.post__info .info--user{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.3rem;
+    color: #888888;
+    font-weight: 600;
+    padding: 2rem 0;
+}
+
+.post__info .info--summary{
+    margin-top: 3rem;
+    font-size: 2rem;
+    color: #333;
+    text-overflow: ellipsis;
+    line-height: 1.70;
+    height: 9.1rem;
+    overflow: hidden;
+}
+
+.post__img{
+    height: 25rem;
+}
+
 .flex__card{
     height: 15rem;
     flex: 1;
@@ -31,4 +82,7 @@
 .card--absolute p{
     color: #fff;
     font-size: 2rem;
+}
+.btn--read{
+    margin: 4rem 0;
 }

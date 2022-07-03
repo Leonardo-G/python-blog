@@ -4,7 +4,7 @@ from Post.forms import PostForm
 from django.contrib.auth.decorators import login_required
 
 def inicio_view(request):
-    
+    print(request.user)
     posts = models.Post.objects.all()
     return render(request, "inicio.html", {"posts": posts})
 
