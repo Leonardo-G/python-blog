@@ -17,7 +17,16 @@
 <body>
     <header>
         {% include "nav.html" %}
-        {% block header %}{% endblock %}
+        
+        <div class="portada">
+            <div class="portada__img">
+                <img src="{% static '/media/portada-inicio.jpg' %}" alt="portada">
+            </div>
+            <div class="portada__title">
+                
+                {% block portada-title %}{% endblock %}
+            </div>
+        </div>
     </header>
     <main>
         {% block content %}{% endblock %}

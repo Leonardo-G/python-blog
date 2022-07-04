@@ -1,12 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>POST</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block link %}
+    {% load static %}  
+    <link rel="stylesheet" href="{% static '/css/post.css' %}">  
+{% endblock %}
+
+{%block titleMeta%} BlogCoder | {{ post.title }} {% endblock %}
+
+{% block portada-title %}
+<p class="post--portada">{{post.title}}</p>
+{% endblock %}
+
+{% block content %}
+    <section class="container post">
+        <img src="#" alt="{{post.title}}">
+        <p class="post__summary">{{post.summary}}</p>
+        <p class="post__description">{{post.description}}</p>
+    </section>
+
+{% endblock %}
