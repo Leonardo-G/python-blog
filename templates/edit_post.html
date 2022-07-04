@@ -31,6 +31,7 @@
                     {% endif%}
                 {% endfor %}
                 <input type="submit" value="Editar Post" class="btn--create">
+                <a class="btn--create btn--delete" href="{% url 'post-delete' post_id=post.id %}">Eliminar Post</a>
             </form>
         </div>
     </section>

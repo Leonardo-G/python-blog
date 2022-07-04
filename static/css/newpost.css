@@ -37,4 +37,7 @@ input, textarea{
     font-size: 3rem;
 }
 
+.btn--delete{
+    margin-left: 4rem;
+}
 

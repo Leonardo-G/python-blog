@@ -38,6 +38,7 @@ def post_view(request, post_id):
     
     return render(request, "post.html", {"post": post, "userActually": userActually})
 
+@login_required
 def edit_post(request, post_id):
     post = models.Post.objects.get(pk=post_id)
     
@@ -55,4 +56,12 @@ def edit_post(request, post_id):
             return redirect(f"/post/{post.id}")
     else:
         form = PostForm(initial={"title": post.title, "summary": post.summary, "description": post.description})
-        return render( request, "edit_post.html", {"form": form})
+        return render( request, "edit_post.html", {"form": form, "post": post})
+    
+@login_required
+def delete_post(request, post_id):
+    post = models.Post.objects.get(pk=post_id)
+    post.delete()
+    
+    return render(request, "post-delete.html")
+    
