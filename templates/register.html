@@ -1,20 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Login"/>
-    </form>
-    <p>
-        {{mensaje}}
-    </p>
-    
-</body>
-</html>
+{% extends "baseAuth.html" %}
+
+{% block head-meta %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block title %}
+Register | BlockCoder
+{% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="flex login">
+        <div class="flex--card login__img">
+            <img src="{% static '/media/portada-inicio.jpg' %}" alt="portada inicio login">
+            <div class="img--texto">
+                <h1>BlogCoder</h1>
+            </div>
+        </div>
+        <div class="flex--card login__texto">
+            <h2>Registrarse</h2>
+            <form action="" method="POST" class="flex--card texto--form">{% csrf_token %}
+                {% for field in form %}
+                    <div class="form--campo">
+                        <label for="{{ field.id_for_label}} {{ field.class }}">{{field.label}}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <p class="error">
+                    {{mensaje}}
+                </p>
+                <input type="submit" value="Login" class="btn--create btn--auth"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

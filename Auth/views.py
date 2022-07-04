@@ -33,7 +33,6 @@ def register_user(request):
         
         if form.is_valid():
             
-            form.cleaned_data["email"]
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
             
@@ -43,6 +42,11 @@ def register_user(request):
             if user is not None:
                 login(request, user)
                 return redirect("/inicio")
+            else:
+                return render(request, "register.html", {"form": form, "mensaje": "Error al registrarse"})
+        else:
+            print(form)
+            return render(request, "register.html", {"form": form, "mensaje": "Usuario ya existen"})
     else:
         form = UserRegisterForm()
     return render(request, "register.html", {"form": form})
