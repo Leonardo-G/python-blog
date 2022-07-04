@@ -1,4 +1,3 @@
-from dataclasses import fields
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
@@ -16,3 +15,11 @@ class UserRegisterForm(UserCreationForm):
        fields = ["username", "email", "password1", "password2"]
        
        help_texts = {k:"" for k in fields}
+       
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(label="Nombre de usuario", widget=forms.TextInput({"autocomplete": "off"}))
+    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput({"autocomplete": "off"}))
+    
+    class Meta:
+        model = User 
+        fields = ["username", "password"]

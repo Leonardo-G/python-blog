@@ -35,19 +35,6 @@
     transform: translateY(-12rem);
 }
 
-.flex{
-    display: flex;
-    justify-content: space-between;
-    column-gap: 4rem;
-}
-
-.grid-3{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    column-gap: 3rem;
-    row-gap: 3rem;
-}
-
 .post{
     background-color: #fff;
     box-shadow: 0 25px 60px 0 rgb(0 0 0 / 5%);

@@ -1,0 +1,61 @@
+.login{
+    height: 100vh;
+}
+
+.login__img{
+    position: relative;
+}
+
+.login__img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login__img .img--texto{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login__img .img--texto h1{
+    font-size: 6rem;
+    color: #fff;
+}
+
+.login__texto{
+    align-self: center;
+}
+
+.login__texto h2{
+    font-size: 2rem;
+}
+
+.texto--form{
+    width: 59%;
+}
+
+.form--campo{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+    row-gap: 1rem;
+}
+
+.texto--form label{
+    font-size: 1.6rem;
+}
+
+.texto--form input[type="password"], .texto--form input[type="text"]{
+    font-size: 1.4rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    border: 1px solid;
+    border-radius: 6px;
+}
+
+.texto--form .error{
+    font-size: 1.4rem;
+    color: red;
+}

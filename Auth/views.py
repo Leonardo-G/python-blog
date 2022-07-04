@@ -1,14 +1,13 @@
 from django.shortcuts import redirect, render;
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
-from Auth.forms import UserRegisterForm
+from Auth.forms import UserLoginForm, UserRegisterForm
 
 def login_user(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data = request.POST);
+        form = UserLoginForm(request, data = request.POST);
         
         if form.is_valid():
             nombre = form.cleaned_data.get("username");
@@ -20,12 +19,13 @@ def login_user(request):
                 login(request, user)
                 return redirect("/inicio")
             else:
-                return render(request, "login.html", {"mensaje": "error"})
+                return render(request, "login.html", {"form": form, "mensaje": "error"})
         else:
-            return render(request, "login.html", {"mensaje": "error en validar login"})
+            print(form)
+            return render(request, "login.html", {"form": form, "mensaje": "Usuario/Contraseña invalido"})
     
-    form = AuthenticationForm();
-    return render(request, "login.html", {"form": form, "mensaje": "asdasd"});
+    form = UserLoginForm();
+    return render(request, "login.html", {"form": form});
 
 def register_user(request):
     if request.method == "POST":

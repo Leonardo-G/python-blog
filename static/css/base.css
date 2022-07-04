@@ -47,4 +47,19 @@ a{
     border-bottom: 2px solid #000;
 }
 
+.flex{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 4rem;
+}
 
+.flex--card{
+    flex: 1;
+}
+
+.grid-3{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
