@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 {% block link %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/newpost.css' %}">    
+    {% load static %}  
+    <link rel="stylesheet" href="{% static '/css/newpost.css' %}">  
 {% endblock %}
 
-{%block titleMeta%} Creá un Post | Blog {% endblock %}
+{%block titleMeta%} BlogCoder | Editar Post {% endblock %}
+
+{% block portada-title %}
+<p class="post--portada">Editar Post</p>
+{% endblock %}
 
 {% block content %}
     <section class="container">
@@ -26,7 +30,7 @@
                         <p class="campo--info">Utilice este espacio para añadir informacion a su Post</p>
                     {% endif%}
                 {% endfor %}
-                <input type="submit" value="Crear Post" class="btn--create">
+                <input type="submit" value="Editar Post" class="btn--create">
             </form>
         </div>
     </section>

@@ -6,16 +6,23 @@
     background-color: #fff;
     transform: translateY(-12rem);
     height: 20rem;
+    padding: 3rem 5rem;
+}
+
+.post__img{
+    display: block;
+}
+
+.btn--edit{
+    margin: 5rem 0;
 }
 
 .post__summary{
-    padding: 3rem 5rem;
     font-size: 2rem;
     font-style: italic;
 }
 
 .post__description{
-    padding: 3rem 5rem;
     white-space: pre-wrap;
     font-size: 2rem;
     line-height: 1.5;

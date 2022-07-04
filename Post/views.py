@@ -37,3 +37,22 @@ def post_view(request, post_id):
     print(userActually)
     
     return render(request, "post.html", {"post": post, "userActually": userActually})
+
+def edit_post(request, post_id):
+    post = models.Post.objects.get(pk=post_id)
+    
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        
+        if form.is_valid():
+            
+            post.id = post_id
+            post.title = form.cleaned_data["title"]
+            post.summary = form.cleaned_data["summary"]
+            post.description = form.cleaned_data["description"]
+            post.save()
+            
+            return redirect(f"/post/{post.id}")
+    else:
+        form = PostForm(initial={"title": post.title, "summary": post.summary, "description": post.description})
+        return render( request, "edit_post.html", {"form": form})

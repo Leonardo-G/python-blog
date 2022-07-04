@@ -13,9 +13,11 @@
 
 {% block content %}
     <section class="container post">
-        <img src="#" alt="{{post.title}}">
+        {% if userActually %}
+            <a class="btn--create btn--edit" href="{% url 'post-edit' post_id=post.id %}">Editar Post</a>
+        {% endif %}
+        <img src="#" alt="{{post.title}}" class="post__img">
         <p class="post__summary">{{post.summary}}</p>
         <p class="post__description">{{post.description}}</p>
     </section>
-
 {% endblock %}
