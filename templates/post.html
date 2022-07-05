@@ -16,8 +16,14 @@
         {% if userActually %}
             <a class="btn--create btn--edit" href="{% url 'post-edit' post_id=post.id %}">Editar Post</a>
         {% endif %}
-        <img src="#" alt="{{post.title}}" class="post__img">
-        <p class="post__summary">{{post.summary}}</p>
+        <img src="{% get_media_prefix %}{{post.image}}" alt="{{post.title}}" class="post__img">
+        <div class="post__info">
+            <p class="info--summary">{{post.summary}}</p>
+            <div class="info--user">
+                <p>Escrito por<span>{{post.user.username}}</span></p>
+                <p class="info--date">Creado en: {{post.created_post}}</p>
+            </div>
+        </div>
         <p class="post__description">{{post.description}}</p>
     </section>
 {% endblock %}

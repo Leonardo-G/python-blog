@@ -4,8 +4,10 @@
     padding: 2rem;
 }
 
-.newpost{
-
+.no--edit{
+    padding: 1rem 0;
+    color: rgb(146, 40, 40);
+    font-size: 1.5rem;
 }
 
 .newpost__campo{

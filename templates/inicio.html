@@ -19,7 +19,7 @@
                 {% for post in posts %}
                 <article class="post">
                     <div class="post__img">
-                        <img src="#" alt="{{ post.title }}">
+                        <img src="{% get_media_prefix %}{{post.image}}" alt="{{ post.title }}">
                     </div>
                     <div class="post__info">
                         <h2>{{post.title}}</h2>

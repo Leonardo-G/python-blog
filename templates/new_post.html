@@ -10,7 +10,7 @@
 {% block content %}
     <section class="container">
         <div class="bg-ff">
-            <form action="" method="POST" class="newpost">
+            <form action="" method="POST" class="newpost" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 {% for field in form %}

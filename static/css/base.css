@@ -59,7 +59,7 @@ a{
 
 .grid-3{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     column-gap: 3rem;
     row-gap: 3rem;
 }
@@ -93,5 +93,5 @@ a{
 }
 
 .portada__title p{
-    font-size: 2rem;
+    font-size: 3rem;
 }

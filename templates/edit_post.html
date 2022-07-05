@@ -14,21 +14,25 @@
 {% block content %}
     <section class="container">
         <div class="bg-ff">
+            <p class="no--edit">No se puede modificar la imagen</p>
+            <img src="{% get_media_prefix %}{{post.image}}" alt="">
             <form action="" method="POST" class="newpost">
                 {% csrf_token %}
 
                 {% for field in form %}
-                    <div class="newpost__campo">
-                        {% if field.id_for_label != "id_title" %}
-                            <label for="{{ field.id_for_label}}">{{field.label}}</label>
-                        {% endif %}
-    
-                        {{ field }}
-                    </div>
+                    {% if field.id_for_label != "id_image" %}
+                        <div class="newpost__campo">
+                            {% if field.id_for_label != "id_title" %}
+                                <label for="{{ field.id_for_label}}">{{field.label}}</label>
+                            {% endif %}
+        
+                            {{ field }}
+                        </div>
 
-                    {% if field.id_for_label == "id_title"  %}
-                        <p class="campo--info">Utilice este espacio para añadir informacion a su Post</p>
-                    {% endif%}
+                        {% if field.id_for_label == "id_title"  %}
+                            <p class="campo--info">Utilice este espacio para añadir informacion a su Post</p>
+                        {% endif%}
+                    {% endif %}
                 {% endfor %}
                 <input type="submit" value="Editar Post" class="btn--create">
                 <a class="btn--create btn--delete" href="{% url 'post-delete' post_id=post.id %}">Eliminar Post</a>

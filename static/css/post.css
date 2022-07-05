@@ -13,18 +13,48 @@
 
 .post__img{
     display: block;
+    width: 100%;
+    object-fit: contain;
 }
 
 .btn--edit{
     margin: 5rem 0;
 }
 
-.post__summary{
+.post__info{
+    column-gap: 5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.post__info .info--summary{
     font-size: 2rem;
     font-style: italic;
+    flex: 1;
+}
+
+.post__info .info--user{
+    flex: 0.5;
+    font-size: 1.5rem;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.post__info .info--user span{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888888;
+    font-weight: 700;
+    margin-left: 1rem;
 }
 
 .post__description{
+    margin-top: 2rem;
     white-space: pre-wrap;
     font-size: 2rem;
     line-height: 1.5;
