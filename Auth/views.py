@@ -41,12 +41,15 @@ def register_user(request):
             
             if user is not None:
                 login(request, user)
+                print(form)
                 return redirect("/inicio")
             else:
+                print("Error")
                 return render(request, "register.html", {"form": form, "mensaje": "Error al registrarse"})
         else:
-            print(form)
-            return render(request, "register.html", {"form": form, "mensaje": "Usuario ya existen"})
+            error = form.errors.as_data
+            print(error)
+            return render(request, "register.html", {"form": form, "mensaje": error})
     else:
         form = UserRegisterForm()
     return render(request, "register.html", {"form": form})

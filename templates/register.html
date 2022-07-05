@@ -27,10 +27,15 @@ Register | BlockCoder
                         {{ field }}
                     </div>
                 {% endfor %}
-                <p class="error">
-                    {{mensaje}}
-                </p>
-                <input type="submit" value="Login" class="btn--create btn--auth"/>
+                {% if mensaje %}
+                    <p class="error">
+                        {{mensaje.username}}
+                    </p>
+                    <p class="error">
+                        {{mensaje.password2}}
+                    </p>
+                {% endif %}
+                <input type="submit" value="Registrarse" class="btn--create btn--auth"/>
             </form>
         </div>
     </div>
