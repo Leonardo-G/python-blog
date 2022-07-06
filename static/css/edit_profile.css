@@ -1,0 +1,43 @@
+h2{
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+.edit-profile{
+    margin-bottom: 5rem;
+}
+
+.formcampo{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+    row-gap: 1rem;
+}
+
+.texto--form label{
+    font-size: 1.6rem;
+}
+
+.texto--form input[type="password"], .texto--form input[type="text"], .texto--form input[type="email"]{
+    font-size: 1.4rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    border: 1px solid;
+    border-radius: 6px;
+}
+
+.texto--form .error{
+    font-size: 1.4rem;
+    color: red;
+}
+
+.texto--form label[for="id_username"], .texto--form label[for="id_password1"], .texto--form label[for="id_password2"]{
+    display: none;
+    visibility: hidden;
+}
+
+.texto--form input[name="username"], .texto--form input[name="password1"], .texto--form input[name="password2"]{
+    display: none;
+    visibility: hidden;
+}

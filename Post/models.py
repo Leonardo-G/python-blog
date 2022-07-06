@@ -10,3 +10,9 @@ class Post(models.Model):
     created_post = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     visited = models.IntegerField(default=0)
+    
+class Nosotros(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+    camada = models.IntegerField()
+    url = models.CharField(max_length=100)

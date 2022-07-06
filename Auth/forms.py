@@ -23,3 +23,17 @@ class UserLoginForm(AuthenticationForm):
     class Meta:
         model = User 
         fields = ["username", "password"]
+        
+class UserEditForm(UserCreationForm):
+
+    email = forms.EmailField(label="Tu Email", widget=forms.EmailInput, required=False);
+    last_name = forms.CharField(label="Apellido", widget=forms.TextInput, required=False);
+    first_name = forms.CharField(label="Nombre", widget=forms.TextInput, required=False);
+    password1 = forms.CharField( widget=forms.PasswordInput, required=False);
+    password2 = forms.CharField(widget=forms.PasswordInput, required=False);
+
+    class Meta:
+       model = User 
+       fields = ["email", "last_name", "first_name"]
+       
+       help_texts = {k:"" for k in fields}

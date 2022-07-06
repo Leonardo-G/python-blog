@@ -11,12 +11,16 @@
                     class="navegacion__enlace"
                 >Inicio</a>
                 <a 
-                    href="{% url 'inicio' %}"
+                    href="{% url 'nosotros' %}"
                     class="navegacion__enlace"
                 >Nosotros</a>
+                <a 
+                    href="{% url 'post-page' page=1 %}"
+                    class="navegacion__enlace"
+                >Articulos</a>
                 {% if request.user.is_authenticated %}
                     <a 
-                        href="{% url 'inicio' %}"
+                        href="{% url 'edit_profile' %}"
                         class="navegacion__enlace"
                     >Mi Perfil</a>
                     <a 
@@ -28,6 +32,10 @@
                         href="{% url 'login' %}"
                         class="navegacion__enlace"
                     >Iniciar Sesión</a>
+                    <a 
+                        href="{% url 'register' %}"
+                        class="navegacion__enlace"
+                    >Registrase</a>
                 {% endif %}
             </div>
         </div>

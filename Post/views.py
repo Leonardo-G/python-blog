@@ -8,10 +8,11 @@ def inicio_view(request):
     print(request.user)
     posts = models.Post.objects.order_by("-visited")[:6]
     
-    # p = Paginator(posts, 2)
-    # page_obj = p.get_page(3)
-    # print(page_obj)
     return render(request, "inicio.html", {"posts": posts})
+
+def nosotros(request):
+    nosotros_list = models.Nosotros.objects.all()
+    return render(request, 'nosotros.html',{'nosotros':nosotros_list})
 
 # CREATE
 @login_required
@@ -41,8 +42,11 @@ def new_post(request):
 def post_view(request, post_id):
     
     post = models.Post.objects.get(pk=post_id)
-    post.visited += 1
-    post.save();
+    
+    #Solamente se tendrá en cuenta la visitas de los usuarios, pero no del creador.
+    if post.user != request.user:
+        post.visited += 1
+        post.save();
     
     userActually = request.user == post.user
     print(userActually)
@@ -57,9 +61,12 @@ def edit_post(request, post_id):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         
+        #En caso de que el usuario tarde en actualizar, tomamaos las visitas que tienen al realizar el POST
+        postActually = models.Post.objects.get(pk=post_id)
         if form.is_valid():
             
             post.id = post_id
+            post.visited = postActually.visited
             post.image = post.image
             post.title = form.cleaned_data["title"]
             post.summary = form.cleaned_data["summary"]
@@ -79,4 +86,17 @@ def delete_post(request, post_id):
     post.delete()
     
     return render(request, "post-delete.html")
+
+def post_view_page(request, page):
+    
+    posts = models.Post.objects.order_by("-visited")
+    paginator = Paginator(posts, 6)
+    post_page = paginator.get_page(int(page))
+    
+    arrayPage = [];
+    numPage = paginator.num_pages;
+    for i in range(numPage):
+        arrayPage.append(i + 1)
+    
+    return render(request, "postPage.html", {"posts": post_page, "arrayPage": arrayPage})
     

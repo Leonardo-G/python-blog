@@ -1,4 +1,8 @@
 from django.db import models
 
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=40)
+from django.contrib.auth.models import User
+
+class Avatar(models.Model):
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to="user", blank=True, null=True)

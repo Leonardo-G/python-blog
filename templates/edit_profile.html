@@ -1,12 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Edit Profile</h2>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block link %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/edit_profile.css' %}">
+{% endblock %}
+
+{%block titleMeta%} Editar Perfil | Blog {% endblock %}
+
+{% block portada-title %}
+<h1>Perfil</h1>
+{% endblock %}
+
+
+{% block content %}
+    <section class="container edit-profile">
+        <h2>Editar Perfil </h2>
+        <h2>De - {{user}}</h2>
+    
+        <form action="" method="POST" class="flex--card texto--form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input type="file" name="image" id="image">
+
+            {% for field in form %}
+                <div class="formcampo">
+                    <label for="{{field.id_for_label}}">{{field.label}}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <p class="error">
+                {{mensaje}}
+            </p>
+            <input type="submit" value="Editar Perfil" class="btn--create btn--auth"/>
+        </form>
+    </section>
+{% endblock %}

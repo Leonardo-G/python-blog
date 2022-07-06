@@ -3,7 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
-from Auth.forms import UserLoginForm, UserRegisterForm
+from Auth.forms import UserEditForm, UserLoginForm, UserRegisterForm
+from Auth import models
 
 def login_user(request):
     if request.method == "POST":
@@ -41,7 +42,9 @@ def register_user(request):
             
             if user is not None:
                 login(request, user)
-                print(form)
+                avatar = models.Avatar(user=request.user, imagen = None)
+                avatar.save();
+                
                 return redirect("/inicio")
             else:
                 print("Error")
@@ -57,7 +60,36 @@ def register_user(request):
 @login_required
 def edit_profile(request):
     
+    # Instancia del login
     user = User.objects.get(username=request.user)
-    print(user.email)
+    avatar = models.Avatar.objects.get(user=request.user.id)
     
-    return render(request, "edit_profile.html")
+    if request.method == "POST":
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid():
+            
+            user.id = user.id
+            user.username = user.username
+            user.last_name = miFormulario.cleaned_data["last_name"]
+            user.first_name = miFormulario.cleaned_data["first_name"]
+            user.email = miFormulario.cleaned_data["email"]
+            user.password = user.password
+            user.save()
+            
+            avatar.id = avatar.id
+            avatar.user_id = user.id;
+            
+            if request.FILES:
+                avatar.imagen = request.FILES["image"]
+            else:
+                avatar.imagen = avatar.imagen
+                
+            avatar.save()
+
+            return redirect("/inicio")
+    
+    else:
+        form = UserEditForm(initial={"email": user.email, "last_name": user.last_name, "first_name": user.first_name})
+        print(user.last_name)
+        return render(request, "edit_profile.html", {"form":form,"user":user})
+

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{%block titleMeta%} Inico | Blog {% endblock %}
+
+{% block link %}
+    {% load static %}  
+    <link rel="stylesheet" href="{% static '/css/inicio.css' %}">  
+    <link rel="stylesheet" href="{% static '/css/nosotros.css' %}">  
+{% endblock %}
+
+{% block portada-title %}
+<h1>BlogCoder</h1>
+<p>Sobre Nosotros</p>
+{% endblock %}
+
+{% block content %}
+    <section class="cards">
+        <div class="container">
+            <div class="grid-3">
+                {% for n in nosotros %}
+                <a href={{n.url}}>
+                    <div class="card">
+                        <img class="pic" src="http://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+                        <h2>Nombre: {{n.nombre}}</h2>
+                        <br>
+                        <h2>Apellido: {{n.apellido}}</h2>
+                        <h3>Camada: {{n.camada}}</h3>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>  
+    </section>
+{% endblock %}
