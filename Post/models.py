@@ -9,3 +9,4 @@ class Post(models.Model):
     image = models.ImageField(upload_to="post", null = True, blank = True)
     created_post = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    visited = models.IntegerField(default=0)

@@ -6,13 +6,14 @@ from django.core.paginator import Paginator
 
 def inicio_view(request):
     print(request.user)
-    posts = models.Post.objects.all()[:6]
+    posts = models.Post.objects.order_by("-visited")[:6]
     
     # p = Paginator(posts, 2)
     # page_obj = p.get_page(3)
     # print(page_obj)
     return render(request, "inicio.html", {"posts": posts})
 
+# CREATE
 @login_required
 def new_post(request):
     if request.method == "POST":
@@ -36,14 +37,19 @@ def new_post(request):
         print(form)
         return render(request, "new_post.html", {"form": form})
     
+# GET
 def post_view(request, post_id):
     
     post = models.Post.objects.get(pk=post_id)
+    post.visited += 1
+    post.save();
+    
     userActually = request.user == post.user
     print(userActually)
     
     return render(request, "post.html", {"post": post, "userActually": userActually})
 
+# POST
 @login_required
 def edit_post(request, post_id):
     post = models.Post.objects.get(pk=post_id)
@@ -65,7 +71,8 @@ def edit_post(request, post_id):
         print(post.image)
         form = PostForm(initial={"image": post.image, "title": post.title, "summary": post.summary, "description": post.description})
         return render( request, "edit_post.html", {"form": form, "post": post})
-    
+   
+# DELETE 
 @login_required
 def delete_post(request, post_id):
     post = models.Post.objects.get(pk=post_id)
