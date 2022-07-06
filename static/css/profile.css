@@ -1,0 +1,36 @@
+.profile{
+    margin: 5rem auto;
+    transform: translateY(-12rem);
+    background-color: #fff;
+    padding: 5rem 0;
+}
+
+.profile-div{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5rem;
+}
+
+.profile-div__imagen{
+    flex: 0.5;
+}
+
+.profile-div__imagen img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.profile-div__info{
+    flex: 1;
+}
+
+.profile-div__info p{
+    font-size: 2rem;
+    padding: 2rem 0;
+}
+
+.btn--edit-profile{
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+}
+

@@ -2,6 +2,7 @@ from django.urls import path
 from Post import views
 
 urlpatterns = [
+    path("", views.redirect_home, name="inicio"),
     path("inicio/", views.inicio_view, name="inicio"),
     path('nosotros/', views.nosotros, name="nosotros"),
     path("new_post/", views.new_post, name="new_post"),

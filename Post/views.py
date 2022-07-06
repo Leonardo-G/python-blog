@@ -1,8 +1,13 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from Post import models
 from Post.forms import PostForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+
+def redirect_home(request):
+    print("Hola")
+    return HttpResponseRedirect("/inicio")
 
 def inicio_view(request):
     print(request.user)

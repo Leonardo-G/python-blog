@@ -58,6 +58,13 @@ def register_user(request):
     return render(request, "register.html", {"form": form})
 
 @login_required
+def get_profile(request):
+    user = User.objects.get(username=request.user)
+    avatar = models.Avatar.objects.get(user=request.user.id)
+    print(avatar.imagen)
+    return render(request, "profile.html", {"avatar": avatar, "user": user})
+
+@login_required
 def edit_profile(request):
     
     # Instancia del login
@@ -86,7 +93,7 @@ def edit_profile(request):
                 
             avatar.save()
 
-            return redirect("/inicio")
+            return redirect("/account/profile")
     
     else:
         form = UserEditForm(initial={"email": user.email, "last_name": user.last_name, "first_name": user.first_name})
