@@ -30,11 +30,12 @@ def new_post(request):
             
             dataImage = formPost.cleaned_data["image"]
             dataTitle = formPost.cleaned_data["title"];
+            dataSubtitle = formPost.cleaned_data["subtitle"];
             dataDescription = formPost.cleaned_data["description"];
             dataSummary = formPost.cleaned_data["summary"];
             dataUser = request.user;
             
-            post = models.Post(image=dataImage, title=dataTitle, description=dataDescription, user=dataUser, summary=dataSummary)
+            post = models.Post(image=dataImage, title=dataTitle, subtitle=dataSubtitle, description=dataDescription, user=dataUser, summary=dataSummary)
             post.save()
             return redirect("/inicio")
     else:
@@ -74,6 +75,7 @@ def edit_post(request, post_id):
             post.visited = postActually.visited
             post.image = post.image
             post.title = form.cleaned_data["title"]
+            post.subtitle = form.cleaned_data["subtitle"]
             post.summary = form.cleaned_data["summary"]
             post.description = form.cleaned_data["description"]
             post.save()
@@ -81,7 +83,7 @@ def edit_post(request, post_id):
             return redirect(f"/post/{post.id}")
     else:
         print(post.image)
-        form = PostForm(initial={"image": post.image, "title": post.title, "summary": post.summary, "description": post.description})
+        form = PostForm(initial={"image": post.image, "title": post.title, "subtitle": post.subtitle, "summary": post.summary, "description": post.description})
         return render( request, "edit_post.html", {"form": form, "post": post})
    
 # DELETE 

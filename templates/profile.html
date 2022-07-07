@@ -24,10 +24,16 @@
                 {% endif %}
             </div>
             <div class="profile-div__info">
-                <p>{{user.username}}</p>
-                <p>{{user.email}}</p>
-                <p>{{user.last_name}}</p>
-                <p>{{user.first_name}}</p>
+                <p>Usuario: {{user.username}}</p>
+                {% if user.email %}
+                    <p>Correo: {{user.email}}</p>
+                {% endif %}
+                {% if user.last_name %}
+                    <p>Apellido: {{user.last_name}}</p>
+                {% endif %}
+                {% if user.first_name %}
+                    <p>Nombre: {{user.first_name}}</p>
+                {% endif %}
             </div>
         </div>
     </section>
